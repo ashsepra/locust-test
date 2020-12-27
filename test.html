@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var request = new XMLHttpRequest();
+
+        request.open('POST', 'https://api.apiary.io/authorization');
+
+        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        request.setRequestHeader('Authorization', 'Basic dGVzdEB0ZXN0LnRlc3Q6dGVzdHRlc3Q=');
+
+        request.onreadystatechange = function () {
+        if (this.readyState === 4) {
+            console.log('Status:', this.status);
+            console.log('Headers:', this.getAllResponseHeaders());
+            console.log('Body:', this.responseText);
+        }
+        };
+
+        var body = "tokenDescription=What%27s%20this%20token%20for%3F&tokenRegenerate=false";
+
+        request.send(body);
+    </script>
+</body>
+</html>

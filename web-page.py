@@ -5,7 +5,7 @@
 import time
 from locust import HttpUser, TaskSet, task, between
 
-class LoadTest(TaskSet):
+class SubClassTest(TaskSet):
 
     @task
     def main_page(self):
@@ -16,6 +16,6 @@ class LoadTest(TaskSet):
         self.client.get('/wiki/Wikipedia:Perihal')
 
 
-class LoadTest(HttpUser):
-    tasks = [LoadTest]
+class MainClassTest(HttpUser):
+    tasks = [SubClassTest]
     wait_time = between(5, 10)
